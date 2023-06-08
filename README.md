@@ -41,8 +41,10 @@ make: *** [Makefile:136: all] Error 2
 ```
 
 What does this mean? Stop and think for a moment about why this could be (hint: it has to do with the module system), then proceed click the hidden text to see the solution. 
-
->! we forgot to load the gcc module, so the default version of gcc (8.5.0) is being used. We need a newer gcc! Load a newer version then try again. You'll need to delete the contents of `build` and `external` in order for it to compile correctly.
+<details> 
+<summary>Click Here for spoiler! </summary>
+we forgot to load the gcc module, so the default version of gcc (8.5.0) is being used. We need a newer gcc! Load a newer version then try again. You'll need to delete the contents of `build` and `external` in order for it to compile correctly.
+</details> 
 
 ## 3: Try to run the program interactively
 
@@ -78,22 +80,26 @@ Now, this may work or it may not. You could get an error telling you an illegal 
 
 `exit` the interactive session to return to a submission node. Now let's first make a really simple submission script to run the program non-interactively. Try to adapt the above interactive code to create a file called `simple.sbatch` which takes an input and output from the command line and submits a job. Then see my solution.  
 
->! in `simple.sbatch` place 
->! ```
->! #!/bin/bash
->! #SBATCH --time=00:10:00
->! #SBATCH --ntasks=1
->! #SBATCH --mem=10G
->! #SBATCH --qos=highmem
->! #SBATCH --partition=cbcb
->! #SBATCH --account=cbcb
->! IN=$1
->! OUT=$2
->!
->! EXEC=/path/to/executable
->!
->! $EXEC $IN $OUT
->! ```
+<details> 
+<summary>Click Here for spoiler! </summary>
+
+in `simple.sbatch` place 
+```
+#!/bin/bash
+#SBATCH --time=00:10:00
+#SBATCH --ntasks=1
+#SBATCH --mem=10G 
+#SBATCH --qos=highmem 
+#SBATCH --partition=cbcb 
+#SBATCH --account=cbcb
+IN=$1
+OUT=$2
+
+EXEC=/path/to/executable
+
+$EXEC $IN $OUT
+```
+</details> 
 
 
 running this with the arguments as before will give you your result. Yay! 
